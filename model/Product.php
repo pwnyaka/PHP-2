@@ -6,14 +6,20 @@ namespace app\model;
 class Product extends Model
 {
     public $id;
-    public $name;
+    public $prodName;
     public $description;
-    public $price;
+    public $cost;
 
+    public function __construct($prodName = null, $description = null, $cost = null)
+    {
+        $this->prodName = $prodName;
+        $this->description = $description;
+        $this->cost = $cost;
+    }
 
     public function getTableName()
     {
-        return "products";
+        return "goods";
     }
 
 }

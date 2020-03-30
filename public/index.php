@@ -1,33 +1,26 @@
 <?php
-include "../engine/Autoload.php";
+include realpath("../config/config.php");
+include realpath("../engine/Autoload.php");
 
-use app\model\{Product, User, Order, Basket};
-use app\engine\{Db, Autoload};
-use app\interfaces\IModel;
-use app\model\example\{RealProduct, DigitProduct, WeightProduct};
+use app\model\{Product, User, Order, Basket, Feedback};
+use app\engine\Autoload;
+//use app\model\example\{RealProduct, DigitProduct, WeightProduct};
 
 spl_autoload_register([new Autoload(), 'loadClass']);
 
 
-$product = new Product(new Db());
-var_dump($product instanceof IModel);
-echo $product->getOne(2);
+//$product = new Product('ВАЗ 2110', 'Просто отечественный автомобиль.', 125000);
+//$product->insert();
+$product = new Product();
+$product->getOne(3);
+var_dump($product);
+//$product->delete();
 
 
-$user = new User(new Db());
-echo $user->getOne(1) . '<br>';
+$user = new User();
+$user->getOne(1);
+var_dump($user);
 
-$order = new Order(new Db());
-echo $order->getOne(5);
-
-$basket = new Basket(new Db());
-echo $basket->getOne(123);
-
-$apple = new RealProduct('яблоки', 7, 12);
-echo $apple->getSum();
-
-$soft = new DigitProduct('ПО', 4, 3500);
-echo $soft->getSum();
-
-$sand = new  WeightProduct('песок', 4, 100);
-echo $sand->getSum();
+$order = new Order();
+$order->getOne(2);
+var_dump($order);
