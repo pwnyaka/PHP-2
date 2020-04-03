@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Мар 30 2020 г., 10:32
+-- Время создания: Апр 03 2020 г., 11:04
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.2.22
 
@@ -95,7 +95,8 @@ INSERT INTO `feedback` (`id`, `name`, `feedback`) VALUES
 (1, 'Машка', 'Считаю ваш магазин лучшим прелучшим во всем мире :***'),
 (2, 'Петя', 'Широчайший ассортимент автомобилей, все в одном месте, супер!'),
 (3, 'Иван', 'Компетентные менеджеры, сервис - огонь! 5+'),
-(31, 'Джереми Кларксон', 'Oh My God! I never see anything like it! Amazing, best idea!!!');
+(31, 'Джереми Кларксон', 'Oh My God! I never see anything like it! Amazing, best idea!!!'),
+(32, 'Alex', 'my feedback');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,7 @@ INSERT INTO `feedback` (`id`, `name`, `feedback`) VALUES
 
 CREATE TABLE `goods` (
   `id` int(11) NOT NULL,
-  `imgName` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `imgName` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `views` int(11) NOT NULL DEFAULT '0',
   `cost` int(11) DEFAULT NULL,
   `prodName` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
@@ -121,7 +122,13 @@ INSERT INTO `goods` (`id`, `imgName`, `views`, `cost`, `prodName`, `description`
 (2, '02.jpg', 8, 8670300, 'Mercedes-Benz S class', 'Mercedes-Benz S-класс — флагманская серия представительских автомобилей немецкой компании\r\n         Mercedes-Benz, дочернего подразделения концерна Daimler AG. Представляет собой наиболее значимую линейку\r\n          моделей в иерархии классов торговой марки.'),
 (3, '03.jpg', 23, 8070100, 'Audi A8', 'Audi A8 четвертого поколения дебютировал в июле 2017 года, а в феврале 2018-го седан добрался\r\n         до России. Автомобиль построен на новой платформе и получил множество современных опций.'),
 (4, '04.jpg', 1, 4650800, 'Hyundai Genesis G90', 'Автомобиль, пришедший на смену лимузину Hyundai Equus, воплотил в себе дизайнерскую концепцию\r\n         «Athletic Elegance» («Атлетичная элегантность»), «прописал» под своим капотом мощные моторы и получил богатый\r\n          функционал, ничем не уступающий именитым конкурентам.'),
-(5, '05.jpg', 4, 4200700, 'KIA K900', 'Сбалансированный, энергичный, солидный и при этом совсем не скучный. Новый повод для чьей-то\r\n         зависти? Новое представление о роскоши! Впечатляющий дизайн интерьера, скульптурные линии кузова, умные\r\n          технологии и убедительная динамика. KIA K900 — эталон роскошного седана.');
+(5, '05.jpg', 4, 4200700, 'KIA K900', 'Сбалансированный, энергичный, солидный и при этом совсем не скучный. Новый повод для чьей-то\r\n         зависти? Новое представление о роскоши! Впечатляющий дизайн интерьера, скульптурные линии кузова, умные\r\n          технологии и убедительная динамика. KIA K900 — эталон роскошного седана.'),
+(6, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
+(9, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
+(10, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
+(11, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
+(12, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
+(13, 'default.jpg', 0, 99990, 'Десятка', 'Просто отечественный автомобиль.');
 
 -- --------------------------------------------------------
 
@@ -168,7 +175,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `login` text NOT NULL,
   `pass` text NOT NULL,
-  `hash` text NOT NULL,
+  `hash` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `role` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -230,13 +237,13 @@ ALTER TABLE `basket`
 -- AUTO_INCREMENT для таблицы `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT для таблицы `goods`
 --
 ALTER TABLE `goods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`

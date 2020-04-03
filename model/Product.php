@@ -3,21 +3,29 @@
 namespace app\model;
 
 
-class Product extends Model
+class Product extends DbModel
 {
     public $id;
-    public $prodName;
-    public $description;
-    public $cost;
+    protected $prodName;
+    protected $imgName;
+    protected $description;
+    protected $cost;
 
-    public function __construct($prodName = null, $description = null, $cost = null)
+    protected $params = [
+        'prodName' => false,
+        'description' => false,
+        'cost' => false
+    ];
+
+    public function __construct($prodName = null, $description = null, $cost = null, $imgName = 'default.jpg')
     {
         $this->prodName = $prodName;
         $this->description = $description;
         $this->cost = $cost;
+        $this->imgName = $imgName;
     }
 
-    public function getTableName()
+    public static function getTableName()
     {
         return "goods";
     }

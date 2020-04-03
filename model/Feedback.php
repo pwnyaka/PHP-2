@@ -4,11 +4,16 @@
 namespace app\model;
 
 
-class Feedback extends Model
+class Feedback extends DbModel
 {
     public $id;
-    public $name;
-    public $feedback;
+    protected $name;
+    protected $feedback;
+
+    protected $params = [
+        'name' => false,
+        'feedback' => false
+    ];
 
     public function __construct($name = null, $feedback = null)
     {
@@ -16,7 +21,7 @@ class Feedback extends Model
         $this->feedback = $feedback;
     }
 
-    public function getTableName()
+    public static function getTableName()
     {
         return 'feedback';
     }

@@ -22,7 +22,6 @@ class Db
 
     private function getConnection() {
         if (is_null($this->connection)) {
-            var_dump("Подключаюсь к БД!");
             $this->connection = new \PDO($this->prepareDsnString(),
                 $this->config['login'],
                 $this->config['password']
@@ -32,12 +31,18 @@ class Db
         return $this->connection;
     }
 
-    private function queryObject($sql, $params, $class) {
-        $this->getConnection()->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_CLASS);
-        $pdoStatement = $this->getConnection()->prepare($sql);
-        $pdoStatement->execute($params);
-        $pdoStatement->setFetchMode(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, $class);
-        return $pdoStatement;
+    public function queryObject($sql, $params, $class) {
+        $statement = $this->query($sql, $params);
+        $statement->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
+        return $statement->fetch();
+    }
+
+    public function queryLimit($sql, $params) {
+        $statement = $this->getConnection()->prepare($sql);
+        $statement->bindParam(':to', $params['to'], \PDO::PARAM_INT);
+        $statement->bindParam(':from', $params['from'], \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll();
     }
 
     private function query($sql, $params) {
@@ -51,7 +56,7 @@ class Db
     }
 
     public function lastInsertId() {
-        return $this->getConnection()->lastInsertId();
+        return $this->connection->lastInsertId();
     }
 
 
@@ -64,9 +69,9 @@ class Db
         );
     }
 
-    public function queryOne($sql, $params = [], $class)
+    public function queryOne($sql, $params = [])
     {
-        return $this->queryObject($sql, $params, $class)->fetch();
+        return $this->query($sql, $params)->fetch();
     }
 
     public function queryAll($sql, $params = [])
