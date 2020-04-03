@@ -4,12 +4,18 @@
 namespace app\model;
 
 
-class Basket extends Model
+class Basket extends DbModel
 {
     public $id;
-    public $session_id;
-    public $good_id;
-    public $quantity;
+    protected $session_id;
+    protected $good_id;
+    protected $quantity;
+
+    protected $params = [
+        'session_id' => false,
+        'good_id' => false,
+        'quantity' => false
+    ];
 
     public function __construct($session_id = null, $good_id = null, $quantity = null)
     {
@@ -18,7 +24,7 @@ class Basket extends Model
         $this->quantity = $quantity;
     }
 
-    public function getTableName()
+    public static function getTableName()
     {
         return "basket";
     }

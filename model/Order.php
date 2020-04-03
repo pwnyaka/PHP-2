@@ -4,15 +4,24 @@
 namespace app\model;
 
 
-class Order extends Model
+class Order extends DbModel
 {
     public $id;
-    public $name;
-    public $phone;
-    public $login;
-    public $status;
-    public $sum;
-    public $session_id;
+    protected $name;
+    protected $phone;
+    protected $login;
+    protected $status;
+    protected $sum;
+    protected $session_id;
+
+    protected $params = [
+        'name' => false,
+        'phone' => false,
+        'login' => false,
+        'status' => false,
+        'sum' => false,
+        'session_id' => false
+    ];
 
     public function __construct($name = null, $phone = null, $login = null, $status = null, $sum = null, $session_id = null)
     {
@@ -24,7 +33,7 @@ class Order extends Model
         $this->session_id = $session_id;
     }
 
-    public function getTableName()
+    public static function getTableName()
     {
         return "orders";
     }
