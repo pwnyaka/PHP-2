@@ -34,7 +34,7 @@ abstract class DbModel extends Model
         $fields = [];
         $params = [];
 
-        foreach ($this->params as $key => $value) {
+        foreach ($this->props as $key => $value) {
 
             $params[":{$key}"] = $this->$key;
             $fields[] = "`$key`";
@@ -53,7 +53,7 @@ abstract class DbModel extends Model
         $fields = [];
         $params = [];
 
-        foreach ($this->params as $key => $value) {
+        foreach ($this->props as $key => $value) {
             if ($value) {
                 $fields[] = "`{$key}` = :{$key}";
                 $params[":{$key}"] = $this->$key;

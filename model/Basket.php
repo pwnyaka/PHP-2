@@ -6,12 +6,12 @@ namespace app\model;
 
 class Basket extends DbModel
 {
-    public $id;
+    protected $id;
     protected $session_id;
     protected $good_id;
     protected $quantity;
 
-    protected $params = [
+    protected $props = [
         'session_id' => false,
         'good_id' => false,
         'quantity' => false

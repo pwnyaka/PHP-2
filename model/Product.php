@@ -3,18 +3,22 @@
 namespace app\model;
 
 
+use app\engine\Db;
+
 class Product extends DbModel
 {
-    public $id;
+    protected $id;
     protected $prodName;
     protected $imgName;
     protected $description;
     protected $cost;
+    protected $views;
 
-    protected $params = [
+    protected $props = [
         'prodName' => false,
         'description' => false,
-        'cost' => false
+        'cost' => false,
+        'imgName' => false
     ];
 
     public function __construct($prodName = null, $description = null, $cost = null, $imgName = 'default.jpg')
@@ -28,6 +32,12 @@ class Product extends DbModel
     public static function getTableName()
     {
         return "goods";
+    }
+
+    public static function updateViews($id)
+    {
+        $sql = "UPDATE goods SET views = views + 1 WHERE id = :id";
+        Db::getInstance()->execute($sql, ["id" => $id]);
     }
 
 }

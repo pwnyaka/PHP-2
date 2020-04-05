@@ -10,7 +10,7 @@ abstract class Model implements IModel
 {
     public function __set($name, $value)
     {
-        if (array_key_exists($name, $this->params)) {
+        if (array_key_exists($name, $this->props)) {
             $this->params[$name] = true;
             $this->$name = $value;
         }
@@ -24,5 +24,10 @@ abstract class Model implements IModel
     public function __call($name, $arguments)
     {
         // TODO: Implement __call() method.
+    }
+
+    public function __isset($name)
+    {
+       if (isset($name)) return true;
     }
 }

@@ -4,8 +4,15 @@ include realpath("../engine/Autoload.php");
 
 use app\model\{Product, User, Order, Basket, Feedback};
 use app\engine\Autoload;
+use app\engine\{TwigRenderer, Renderer};
+use app\model\Auth;
+use app\controllers\Controller;
+
+session_start();
 
 spl_autoload_register([new Autoload(), 'loadClass']);
+
+require_once  realpath("../vendor/autoload.php");
 
 $url_array = explode("/", $_SERVER['REQUEST_URI']);
 
@@ -13,24 +20,14 @@ $actionName = $url_array[2];
 $controllerName = $url_array[1] ?: 'index';
 
 $controllerClass = CONTROLLER_NAMESPACE . ucfirst($controllerName) . "Controller";
-
 if (class_exists($controllerClass)) {
-    $controller = new $controllerClass();
+    $controller = new $controllerClass(new TwigRenderer(TWIG_TEMPLATE_DIR));
+    if (Auth::is_auth()) {
+        Controller::$authParams['auth'] = true;
+        Controller::$authParams['user'] = Auth::get_user();
+    }
     $controller->runAction($actionName);
 } else {
     die("Контроллер не существует.");
 }
 
-//$product = new Product('ВАЗ 2110', 'Просто отечественный автомобиль.', 125000);
-//$product->insert();
-//var_dump($product);
-//$product->prodName = 'Десятка';
-//$product->cost = 99990;
-//var_dump($product);
-//$product->update();
-
-//$user = User::getOne(2);
-//var_dump($user);
-//
-//$order = Order::getOne(1);
-//var_dump($order);

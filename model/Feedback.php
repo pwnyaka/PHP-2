@@ -6,11 +6,11 @@ namespace app\model;
 
 class Feedback extends DbModel
 {
-    public $id;
+    protected $id;
     protected $name;
     protected $feedback;
 
-    protected $params = [
+    protected $props = [
         'name' => false,
         'feedback' => false
     ];
