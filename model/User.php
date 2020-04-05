@@ -5,13 +5,13 @@ namespace app\model;
 
 class User extends DbModel
 {
-    public $id;
+    protected $id;
     protected $login;
     protected $pass;
     public $hash;
     protected $role;
 
-    protected $params = [
+    protected $props = [
         'login' => false,
         'pass' => false,
         'role' => false

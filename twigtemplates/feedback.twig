@@ -1,0 +1,7 @@
+<h2>Отзывы</h2>
+
+{% for item in feedback %}
+<h3>{{ item.name }}</h3>
+<p>{{ item.feedback }}</p>
+<hr>
+{% endfor %}

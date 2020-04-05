@@ -4,14 +4,31 @@
 namespace app\controllers;
 
 
+use app\engine\Db;
+use app\interfaces\IRenderer;
+
 abstract class Controller
 {
     protected $action;
     protected $defaultAction = 'self';
     protected $layout = 'main';
     protected $useLayout = true;
+    protected $renderer;
 
-    public function runAction($action = null) {
+    public static $authParams = [
+        'auth' => false,
+        'user' => ''
+    ];
+
+
+    public function __construct(IRenderer $renderer)
+    {
+        $this->renderer = $renderer;
+    }
+
+
+    public function runAction($action = null)
+    {
         $this->action = $action ?: $this->defaultAction;
         $method = "action" . ucfirst($this->action);
 
@@ -22,7 +39,10 @@ abstract class Controller
         }
     }
 
-    public function render($template, $params = []) {
+    public function render($template, $params = [])
+    {
+        $params['auth'] = static::$authParams['auth'];
+        $params['user'] = static::$authParams['user'];
         if ($this->useLayout) {
             return $this->renderTemplate("layouts/{$this->layout}", [
                 'menu' => $this->renderTemplate('menu', $params),
@@ -34,14 +54,9 @@ abstract class Controller
 
     }
 
-    public function renderTemplate($template, $params = []) {
-        ob_start();
-        extract($params);
-        $templatePath = TEMPLATE_DIR . $template . ".php";
-        if (file_exists($templatePath)) {
-            include $templatePath;
-        }
-        return ob_get_clean();
+    public function renderTemplate($template, $params = [])
+    {
+        return $this->renderer->renderTemplate($template, $params);
     }
 
 }

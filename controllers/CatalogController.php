@@ -17,6 +17,7 @@ class CatalogController extends Controller
 
     public function actionCard() {
         $id = (int)$_GET['id'];
+        Product::updateViews($id);
         echo $this->render('card', [
             'product' => Product::getOne($id)
         ]);

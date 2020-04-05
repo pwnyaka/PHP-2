@@ -6,7 +6,7 @@ namespace app\model;
 
 class Order extends DbModel
 {
-    public $id;
+    protected $id;
     protected $name;
     protected $phone;
     protected $login;
@@ -14,7 +14,7 @@ class Order extends DbModel
     protected $sum;
     protected $session_id;
 
-    protected $params = [
+    protected $props = [
         'name' => false,
         'phone' => false,
         'login' => false,
