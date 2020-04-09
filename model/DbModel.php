@@ -5,9 +5,17 @@ namespace app\model;
 
 
 use app\engine\Db;
+use app\engine\Session;
 
 abstract class DbModel extends Model
 {
+    protected static $session;
+
+    public static function getSession()
+    {
+        return static::$session = new Session();
+    }
+
     public static function getOne($id)
     {
         $tableName = static::getTableName();
@@ -29,6 +37,18 @@ abstract class DbModel extends Model
         return Db::getInstance()->queryLimit($sql, ["to" => $to, "from" => $from]);
     }
 
+    public static function getCountWhere($field, $value) {
+        $tableName = static::getTableName();
+        $sql = "SELECT count(id) as count FROM {$tableName} WHERE `{$field}`=:value";
+        return Db::getInstance()->queryOne($sql, ["value" => $value])['count'];
+    }
+
+    public static function getSummWhere($field, $value) {
+        $tableName = static::getTableName();
+        $sql = "SELECT SUM(cost) as summ FROM {$tableName} WHERE `{$field}`=:value";
+        return Db::getInstance()->queryOne($sql, ["value" => $value])['summ'];
+    }
+
     public function insert()
     {
         $fields = [];
@@ -48,6 +68,13 @@ abstract class DbModel extends Model
         $this->id = Db::getInstance()->lastInsertId();
     }
 
+    public function save() {
+        if (is_null($this->id))
+            $this->insert();
+        else
+            $this->update();
+    }
+
     public function update()
     {
         $fields = [];
@@ -57,6 +84,7 @@ abstract class DbModel extends Model
             if ($value) {
                 $fields[] = "`{$key}` = :{$key}";
                 $params[":{$key}"] = $this->$key;
+                $this->props[$key] = false;
             }
         }
         $fields = implode(', ', $fields);

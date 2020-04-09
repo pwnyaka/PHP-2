@@ -1,0 +1,20 @@
+<div class="header-name">
+    <h2>Корзина</h2>
+</div>
+
+{% if products == null %}
+    Корзина пуста
+{% else %}
+    {% for item in products %}
+        <div class="basket-product" id="{{ item.id_basket }}">
+            <h2>{{ item.prodName }}</h2>
+            <p>Описание: {{ item.description }}</p>
+            <p>Цена:{{ item.cost }}</p>
+            <button class="delete" data-id="{{ item.id_basket }}">Удалить</button>
+            <hr>
+        </div>
+    {% endfor %}
+    <p class="basket-summ"><b>Сумма заказа: </b><span id="summ">{{ summ }}</span> </p>
+{% endif %}
+
+<script src="/js/basket.js"></script>

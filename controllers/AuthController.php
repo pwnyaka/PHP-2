@@ -9,13 +9,13 @@ class AuthController extends Controller
 {
     public function actionLogin()
     {
-        if (isset($_POST['send'])) {
-            $login = $_POST['login'];
-            $pass = $_POST['pass'];
+        if (isset($this->request->getParams()['send'])) {
+            $login = $this->request->getParams()['login'];
+            $pass = $this->request->getParams()['pass'];
             if (!Auth::auth($login, $pass)) {
                 Die('Не верный логин пароль');
             } else {
-                if (isset($_POST['save'])) {
+                if (isset($this->request->getParams()['save'])) {
                     Auth::updateHash();
                 }
                 header("Location:" . $_SERVER['HTTP_REFERER']);

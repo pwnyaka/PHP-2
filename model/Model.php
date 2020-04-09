@@ -28,6 +28,6 @@ abstract class Model implements IModel
 
     public function __isset($name)
     {
-       if (isset($name)) return true;
+       return isset($name);
     }
 }
