@@ -30,9 +30,11 @@ class Auth extends DbModel
         $sql = "SELECT * FROM {$tableName} WHERE login = :login";
         $passDb = Db::getInstance()->queryOne($sql, ["login" => $login]);
         if (password_verify($pass, $passDb['pass'])) {
-            $_SESSION['login'] = $login;
-            $_SESSION['id'] = $passDb['id'];
-            $_SESSION['role'] = $passDb['role'];
+            static::getSession()->setSessionParams([
+                'login' => $login,
+                'id' => $passDb['id'],
+                'role' => $passDb['role'],
+            ]);
             return true;
         }
         return false;
@@ -50,16 +52,16 @@ class Auth extends DbModel
             $sql = "SELECT * FROM `users` WHERE `hash`=:hash";
             $user = Db::getInstance()->queryOne($sql, ["hash" => $hash])['login'];
             if (!empty($user)) {
-                $_SESSION['login'] = $user;
+                static::getSession()->setSessionParams(['login' => $user]);
             }
         }
-        return isset($_SESSION['login']);
+        return !is_null(static::getSession()->getSessionParams('login'));
     }
 
 
     public static function get_user()
     {
-        return $_SESSION['login'];
+        return static::getSession()->getSessionParams('login');
 
     }
 }

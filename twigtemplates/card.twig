@@ -3,5 +3,9 @@
 <img src="/img/{{ product.imgName }}" alt="" style="width: 1000px;">
 <p>{{ product.description }}</p>
 <p>Цена: {{ product.cost }}</p>
+<button class="buy" data-id="{{ product.id }}" data-cost="{{ product.cost }}">Купить</button>
+
+<script src="/js/functions.js"></script>
+<script src="/js/card.js"></script>
 
 

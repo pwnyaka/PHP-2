@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 05 2020 г., 15:42
+-- Время создания: Апр 09 2020 г., 12:32
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.3.9
 
@@ -32,48 +32,51 @@ CREATE TABLE `basket` (
   `id` int(11) NOT NULL,
   `good_id` int(11) NOT NULL,
   `session_id` text NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT '1'
+  `quantity` int(11) NOT NULL DEFAULT '1',
+  `cost` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `basket`
 --
 
-INSERT INTO `basket` (`id`, `good_id`, `session_id`, `quantity`) VALUES
-(13, 1, 'test', 6),
-(14, 2, 'test', 1),
-(47, 5, '4gnchl6eto7blr6ir8lnlc81un19q17k', 1),
-(84, 1, 'vt90lof7cq3cp4gigveg37m4bm24afr8', 1),
-(85, 2, 'vt90lof7cq3cp4gigveg37m4bm24afr8', 1),
-(87, 1, '63ooiufuvoemg8g7ses1i2a4vmsiflt1', 1),
-(88, 2, '63ooiufuvoemg8g7ses1i2a4vmsiflt1', 1),
-(89, 3, '7bqc2gcgg1ledrola2vs88196qrlmjf4', 2),
-(90, 4, 'alsni85kmt48khp1usl2n3c20o4tg2vn', 5),
-(91, 1, 'alsni85kmt48khp1usl2n3c20o4tg2vn', 2),
-(92, 3, 'lci4gvie4skmcm06k4ri1kdcnnoe5jr4', 3),
-(93, 2, 'lci4gvie4skmcm06k4ri1kdcnnoe5jr4', 1),
-(94, 3, 'i7bts9c9o1eic74deqoq11v512lo0231', 3),
-(95, 1, 'i7bts9c9o1eic74deqoq11v512lo0231', 1),
-(96, 5, 'qg6p9d471ahgh90unmspkjh38k3dmem4', 2),
-(97, 4, 'qg6p9d471ahgh90unmspkjh38k3dmem4', 2),
-(99, 5, '95otpmps39id221eff6tdt1l3cstd488', 5),
-(100, 3, '95otpmps39id221eff6tdt1l3cstd488', 1),
-(101, 1, '95otpmps39id221eff6tdt1l3cstd488', 1),
-(102, 2, '95otpmps39id221eff6tdt1l3cstd488', 1),
-(103, 3, 'sd52k86th11hlqq1hsao898u30hdaavd', 1),
-(104, 1, 'sd52k86th11hlqq1hsao898u30hdaavd', 1),
-(105, 2, 'sd52k86th11hlqq1hsao898u30hdaavd', 1),
-(106, 5, 'sd52k86th11hlqq1hsao898u30hdaavd', 1),
-(107, 4, 'sd52k86th11hlqq1hsao898u30hdaavd', 1),
-(108, 1, 't3vemvjf8ck8oncjoepulqp57e9j6ao8', 3),
-(109, 3, 'dli08jabt6q5al52cpju251q8acgueof', 2),
-(110, 1, 'dli08jabt6q5al52cpju251q8acgueof', 2),
-(111, 1, 'vc79ltiiq10gnm9tlgrfe4hsa0krfgkf', 1),
-(112, 2, 'vc79ltiiq10gnm9tlgrfe4hsa0krfgkf', 1),
-(113, 5, 'vc79ltiiq10gnm9tlgrfe4hsa0krfgkf', 1),
-(114, 4, 'vc79ltiiq10gnm9tlgrfe4hsa0krfgkf', 1),
-(115, 1, 'p2htn66g1vlo1nm76sd8cvl7hupteu50', 2),
-(116, 1, 'k5geqf3skn9doi8bnvv0obt6lteip1je', 1);
+INSERT INTO `basket` (`id`, `good_id`, `session_id`, `quantity`, `cost`) VALUES
+(13, 1, 'test', 6, 0),
+(14, 2, 'test', 1, 0),
+(47, 5, '4gnchl6eto7blr6ir8lnlc81un19q17k', 1, 0),
+(84, 1, 'vt90lof7cq3cp4gigveg37m4bm24afr8', 1, 0),
+(85, 2, 'vt90lof7cq3cp4gigveg37m4bm24afr8', 1, 0),
+(87, 1, '63ooiufuvoemg8g7ses1i2a4vmsiflt1', 1, 0),
+(88, 2, '63ooiufuvoemg8g7ses1i2a4vmsiflt1', 1, 0),
+(89, 3, '7bqc2gcgg1ledrola2vs88196qrlmjf4', 2, 0),
+(90, 4, 'alsni85kmt48khp1usl2n3c20o4tg2vn', 5, 0),
+(91, 1, 'alsni85kmt48khp1usl2n3c20o4tg2vn', 2, 0),
+(110, 1, 'dli08jabt6q5al52cpju251q8acgueof', 2, 0),
+(133, 0, 's6h71fi2kmqhhrnhh65sccvtgra3f3ja', 1, 0),
+(134, 3, 's6h71fi2kmqhhrnhh65sccvtgra3f3ja', 1, 0),
+(135, 4, 's6h71fi2kmqhhrnhh65sccvtgra3f3ja', 1, 0),
+(136, 1, 'b1c9us9lohm0gj5shau01guouluique4', 1, 0),
+(137, 2, 'b1c9us9lohm0gj5shau01guouluique4', 1, 0),
+(138, 3, 'b1c9us9lohm0gj5shau01guouluique4', 1, 0),
+(139, 11, 'b1c9us9lohm0gj5shau01guouluique4', 1, 0),
+(140, 13, 'b1c9us9lohm0gj5shau01guouluique4', 1, 0),
+(141, 12, 'j1pm9473o18nc2uh1u1pu69jkag83tcf', 1, 0),
+(142, 15, 'j1pm9473o18nc2uh1u1pu69jkag83tcf', 1, 0),
+(143, 16, 'j1pm9473o18nc2uh1u1pu69jkag83tcf', 1, 0),
+(144, 1, 'j1pm9473o18nc2uh1u1pu69jkag83tcf', 1, 0),
+(145, 2, 'j1pm9473o18nc2uh1u1pu69jkag83tcf', 1, 0),
+(146, 3, 'j1pm9473o18nc2uh1u1pu69jkag83tcf', 1, 0),
+(147, 4, 'j1pm9473o18nc2uh1u1pu69jkag83tcf', 1, 0),
+(148, 13, 'r9gtu9ne6v4ggofqfo5n5p2t5q4mp1ek', 1, 0),
+(149, 15, 'r9gtu9ne6v4ggofqfo5n5p2t5q4mp1ek', 1, 0),
+(150, 16, 'r9gtu9ne6v4ggofqfo5n5p2t5q4mp1ek', 1, 0),
+(151, 1, 'r9gtu9ne6v4ggofqfo5n5p2t5q4mp1ek', 1, 8180000),
+(152, 2, 'r9gtu9ne6v4ggofqfo5n5p2t5q4mp1ek', 1, 8670300),
+(153, 1, 'kk09ff5q7v0nm0aroo25dao3k60lij25', 1, 8180000),
+(154, 10, 'kk09ff5q7v0nm0aroo25dao3k60lij25', 1, 150500),
+(155, 11, 'kk09ff5q7v0nm0aroo25dao3k60lij25', 1, 125000),
+(156, 12, 'kk09ff5q7v0nm0aroo25dao3k60lij25', 1, 70000),
+(221, 1, '9hn98l1drsq9u5c7766aa16d5ois0e97', 1, 8180000);
 
 -- --------------------------------------------------------
 
@@ -118,19 +121,19 @@ CREATE TABLE `goods` (
 --
 
 INSERT INTO `goods` (`id`, `imgName`, `views`, `cost`, `prodName`, `description`) VALUES
-(1, '01.jpg', 46, 8180000, 'BMW 7 series', 'В этой серии некоторые детали ходовой части изготовлены из алюминия, это позволило добиться\r\n         большей точности рулевого управления. В передней части появился новый выступ на капоте, а сзади машины\r\n          установлена новая хромированная планка. По сравнению с более ранними моделями в этой серии также изменились\r\n           передние и задние фары и фартуки.'),
+(1, '01.jpg', 58, 8180000, 'BMW 7 series', 'В этой серии некоторые детали ходовой части изготовлены из алюминия, это позволило добиться\r\n         большей точности рулевого управления. В передней части появился новый выступ на капоте, а сзади машины\r\n          установлена новая хромированная планка. По сравнению с более ранними моделями в этой серии также изменились\r\n           передние и задние фары и фартуки.'),
 (2, '02.jpg', 15, 8670300, 'Mercedes-Benz S class', 'Mercedes-Benz S-класс — флагманская серия представительских автомобилей немецкой компании\r\n         Mercedes-Benz, дочернего подразделения концерна Daimler AG. Представляет собой наиболее значимую линейку\r\n          моделей в иерархии классов торговой марки.'),
-(3, '03.jpg', 26, 8070100, 'Audi A8', 'Audi A8 четвертого поколения дебютировал в июле 2017 года, а в феврале 2018-го седан добрался\r\n         до России. Автомобиль построен на новой платформе и получил множество современных опций.'),
+(3, '03.jpg', 30, 8070100, 'Audi A8', 'Audi A8 четвертого поколения дебютировал в июле 2017 года, а в феврале 2018-го седан добрался\r\n         до России. Автомобиль построен на новой платформе и получил множество современных опций.'),
 (4, '04.jpg', 1, 4650800, 'Hyundai Genesis G90', 'Автомобиль, пришедший на смену лимузину Hyundai Equus, воплотил в себе дизайнерскую концепцию\r\n         «Athletic Elegance» («Атлетичная элегантность»), «прописал» под своим капотом мощные моторы и получил богатый\r\n          функционал, ничем не уступающий именитым конкурентам.'),
-(5, '05.jpg', 4, 4200700, 'KIA K900', 'Сбалансированный, энергичный, солидный и при этом совсем не скучный. Новый повод для чьей-то\r\n         зависти? Новое представление о роскоши! Впечатляющий дизайн интерьера, скульптурные линии кузова, умные\r\n          технологии и убедительная динамика. KIA K900 — эталон роскошного седана.'),
+(5, '05.jpg', 5, 4200700, 'KIA K900', 'Сбалансированный, энергичный, солидный и при этом совсем не скучный. Новый повод для чьей-то\r\n         зависти? Новое представление о роскоши! Впечатляющий дизайн интерьера, скульптурные линии кузова, умные\r\n          технологии и убедительная динамика. KIA K900 — эталон роскошного седана.'),
 (6, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
-(9, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
-(10, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
-(11, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
-(12, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
+(9, 'default.jpg', 0, 99000, 'ВАЗ 2115', 'Просто отечественный автомобиль.'),
+(10, 'default.jpg', 1, 150500, 'ВАЗ 2108', 'Просто отечественный автомобиль.'),
+(11, 'default.jpg', 1, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
+(12, 'default.jpg', 0, 70000, 'ВАЗ 2199', 'Просто отечественный автомобиль.'),
 (13, 'default.jpg', 0, 99990, 'Десятка', 'Просто отечественный автомобиль.'),
-(14, NULL, 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
-(15, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
+(14, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
+(15, 'default.jpg', 0, 50000, 'ВАЗ 2105', 'Просто отечественный автомобиль.'),
 (16, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.');
 
 -- --------------------------------------------------------
@@ -234,7 +237,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
 
 --
 -- AUTO_INCREMENT для таблицы `feedback`
