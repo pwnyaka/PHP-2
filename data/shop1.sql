@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 09 2020 г., 12:32
+-- Время создания: Апр 13 2020 г., 13:23
 -- Версия сервера: 8.0.15
 -- Версия PHP: 7.3.9
 
@@ -76,7 +76,40 @@ INSERT INTO `basket` (`id`, `good_id`, `session_id`, `quantity`, `cost`) VALUES
 (154, 10, 'kk09ff5q7v0nm0aroo25dao3k60lij25', 1, 150500),
 (155, 11, 'kk09ff5q7v0nm0aroo25dao3k60lij25', 1, 125000),
 (156, 12, 'kk09ff5q7v0nm0aroo25dao3k60lij25', 1, 70000),
-(221, 1, '9hn98l1drsq9u5c7766aa16d5ois0e97', 1, 8180000);
+(221, 1, '9hn98l1drsq9u5c7766aa16d5ois0e97', 1, 8180000),
+(224, 1, 't9ovo2vhqthv33ir6134vbmp4rf2qn4f', 1, 8180000),
+(225, 1, 't9ovo2vhqthv33ir6134vbmp4rf2qn4f', 1, 8180000),
+(226, 1, '0ln2pa5afgkb9qlglhj5r0gsd1v6cu64', 1, 8180000),
+(227, 1, '0ln2pa5afgkb9qlglhj5r0gsd1v6cu64', 1, 8180000),
+(228, 2, '0ln2pa5afgkb9qlglhj5r0gsd1v6cu64', 1, 8670300),
+(229, 1, '0jpkctik7aqdrpj8dvfjlrvrctleit47', 1, 8180000),
+(230, 1, '0jpkctik7aqdrpj8dvfjlrvrctleit47', 1, 8180000),
+(231, 1, '0jpkctik7aqdrpj8dvfjlrvrctleit47', 1, 8180000),
+(232, 1, '90djoquetfc1jpdeq8oilb9r5l9a7486', 1, 8180000),
+(233, 1, '90djoquetfc1jpdeq8oilb9r5l9a7486', 1, 8180000),
+(234, 1, '90djoquetfc1jpdeq8oilb9r5l9a7486', 1, 8180000),
+(235, 1, '9qu0hdcnleigemhlde14ttmp9gc7ue71', 1, 8180000),
+(236, 1, '9qu0hdcnleigemhlde14ttmp9gc7ue71', 1, 8180000),
+(237, 1, '9qu0hdcnleigemhlde14ttmp9gc7ue71', 1, 8180000),
+(238, 1, 't2upvau3j8dop896nu6aij9c74c60ep2', 1, 8180000),
+(239, 1, 't2upvau3j8dop896nu6aij9c74c60ep2', 1, 8180000),
+(254, 9, 'lag77kr4mr510ipagm5cgv7mkbsghsk9', 1, 99000),
+(255, 9, 'lag77kr4mr510ipagm5cgv7mkbsghsk9', 1, 99000),
+(260, 5, 'v9gcpj1hgrrpqfs7pqa90kd9g7b3g62a', 1, 4200700),
+(265, 1, 'i17rivd3sjs7dp2svmdj5d764kkkvj86', 1, 8180000),
+(272, 1, 'giqc88c0bn23nbroo1p6blaosup7geja', 1, 8180000),
+(273, 2, 'giqc88c0bn23nbroo1p6blaosup7geja', 1, 8670300),
+(274, 2, 'giqc88c0bn23nbroo1p6blaosup7geja', 1, 8670300),
+(275, 6, '5r6m2nld1csaft2os5asfpcrukvj8i64', 1, 125000),
+(276, 6, '5r6m2nld1csaft2os5asfpcrukvj8i64', 1, 125000),
+(277, 1, 'sgcvrfvct2smvqpd42pgn3v39sstdgto', 1, 8180000),
+(288, 9, 'o2ug75jogkh8kaks9g7mkbtoqk2k8gcd', 1, 99000),
+(289, 1, 'cen591ccqklg9k7k8q4racp2psf16797', 1, 8180000),
+(290, 1, '8vho3vpiumbuaun3snr2i4plpt8nkpnn', 1, 8180000),
+(291, 1, '8vho3vpiumbuaun3snr2i4plpt8nkpnn', 1, 8180000),
+(293, 10, 'mi7uge1514hvifdh61colescsgtudb2i', 1, 150500),
+(294, 5, 'mi7uge1514hvifdh61colescsgtudb2i', 1, 4200700),
+(296, 1, 'jgkpe6opm1i8ouk4vh9kf93bsk6eib6n', 1, 8180000);
 
 -- --------------------------------------------------------
 
@@ -121,14 +154,14 @@ CREATE TABLE `goods` (
 --
 
 INSERT INTO `goods` (`id`, `imgName`, `views`, `cost`, `prodName`, `description`) VALUES
-(1, '01.jpg', 58, 8180000, 'BMW 7 series', 'В этой серии некоторые детали ходовой части изготовлены из алюминия, это позволило добиться\r\n         большей точности рулевого управления. В передней части появился новый выступ на капоте, а сзади машины\r\n          установлена новая хромированная планка. По сравнению с более ранними моделями в этой серии также изменились\r\n           передние и задние фары и фартуки.'),
-(2, '02.jpg', 15, 8670300, 'Mercedes-Benz S class', 'Mercedes-Benz S-класс — флагманская серия представительских автомобилей немецкой компании\r\n         Mercedes-Benz, дочернего подразделения концерна Daimler AG. Представляет собой наиболее значимую линейку\r\n          моделей в иерархии классов торговой марки.'),
-(3, '03.jpg', 30, 8070100, 'Audi A8', 'Audi A8 четвертого поколения дебютировал в июле 2017 года, а в феврале 2018-го седан добрался\r\n         до России. Автомобиль построен на новой платформе и получил множество современных опций.'),
+(1, '01.jpg', 60, 8180000, 'BMW 7 series', 'В этой серии некоторые детали ходовой части изготовлены из алюминия, это позволило добиться\r\n         большей точности рулевого управления. В передней части появился новый выступ на капоте, а сзади машины\r\n          установлена новая хромированная планка. По сравнению с более ранними моделями в этой серии также изменились\r\n           передние и задние фары и фартуки.'),
+(2, '02.jpg', 17, 8670300, 'Mercedes-Benz S class', 'Mercedes-Benz S-класс — флагманская серия представительских автомобилей немецкой компании\r\n         Mercedes-Benz, дочернего подразделения концерна Daimler AG. Представляет собой наиболее значимую линейку\r\n          моделей в иерархии классов торговой марки.'),
+(3, '03.jpg', 31, 8070100, 'Audi A8', 'Audi A8 четвертого поколения дебютировал в июле 2017 года, а в феврале 2018-го седан добрался\r\n         до России. Автомобиль построен на новой платформе и получил множество современных опций.'),
 (4, '04.jpg', 1, 4650800, 'Hyundai Genesis G90', 'Автомобиль, пришедший на смену лимузину Hyundai Equus, воплотил в себе дизайнерскую концепцию\r\n         «Athletic Elegance» («Атлетичная элегантность»), «прописал» под своим капотом мощные моторы и получил богатый\r\n          функционал, ничем не уступающий именитым конкурентам.'),
 (5, '05.jpg', 5, 4200700, 'KIA K900', 'Сбалансированный, энергичный, солидный и при этом совсем не скучный. Новый повод для чьей-то\r\n         зависти? Новое представление о роскоши! Впечатляющий дизайн интерьера, скульптурные линии кузова, умные\r\n          технологии и убедительная динамика. KIA K900 — эталон роскошного седана.'),
 (6, 'default.jpg', 0, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
 (9, 'default.jpg', 0, 99000, 'ВАЗ 2115', 'Просто отечественный автомобиль.'),
-(10, 'default.jpg', 1, 150500, 'ВАЗ 2108', 'Просто отечественный автомобиль.'),
+(10, 'default.jpg', 5, 150500, 'ВАЗ 2108', 'Просто отечественный автомобиль.'),
 (11, 'default.jpg', 1, 125000, 'ВАЗ 2110', 'Просто отечественный автомобиль.'),
 (12, 'default.jpg', 0, 70000, 'ВАЗ 2199', 'Просто отечественный автомобиль.'),
 (13, 'default.jpg', 0, 99990, 'Десятка', 'Просто отечественный автомобиль.'),
@@ -145,7 +178,7 @@ INSERT INTO `goods` (`id`, `imgName`, `views`, `cost`, `prodName`, `description`
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` text NOT NULL,
   `session_id` text NOT NULL,
   `status` int(11) NOT NULL DEFAULT '0',
   `login` text,
@@ -157,19 +190,15 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `name`, `phone`, `session_id`, `status`, `login`, `sum`) VALUES
-(1, 'qwerty', 12345, '63ooiufuvoemg8g7ses1i2a4vmsiflt1', 1, NULL, NULL),
-(2, 'aaa', 111, '7bqc2gcgg1ledrola2vs88196qrlmjf4', 1, NULL, NULL),
-(3, 'Вася', 777, 'alsni85kmt48khp1usl2n3c20o4tg2vn', 3, NULL, NULL),
-(4, 'Маша', 12345, 'lci4gvie4skmcm06k4ri1kdcnnoe5jr4', 1, NULL, NULL),
-(5, 'aaa', 777, 'i7bts9c9o1eic74deqoq11v512lo0231', 1, 'user2', NULL),
-(6, 'aaa', 777, 'qg6p9d471ahgh90unmspkjh38k3dmem4', 0, 'user2', NULL),
-(7, 'Алексей', 98765, '95otpmps39id221eff6tdt1l3cstd488', 0, 'user1', NULL),
-(8, 'Алексей', 555444, 'sd52k86th11hlqq1hsao898u30hdaavd', 1, 'user1', NULL),
-(9, 'Алекс', 12345, 't3vemvjf8ck8oncjoepulqp57e9j6ao8', 0, 'user1', NULL),
-(1000, 'Vasya', 123890, 'dli08jabt6q5al52cpju251q8acgueof', 0, NULL, 32500200),
-(1001, 'Маша', 456, 'vc79ltiiq10gnm9tlgrfe4hsa0krfgkf', 0, NULL, 25701800),
-(1002, 'qwer', 123, 'p2htn66g1vlo1nm76sd8cvl7hupteu50', 0, 'admin', 16360000),
-(1003, '12', 12, 'k5geqf3skn9doi8bnvv0obt6lteip1je', 0, 'admin', 8180000);
+(1002, 'qwer', '123', 'p2htn66g1vlo1nm76sd8cvl7hupteu50', 0, 'admin', 16360000),
+(1003, '12', '12', 'k5geqf3skn9doi8bnvv0obt6lteip1je', 3, 'admin', 8180000),
+(1004, 'Саша', '12345', 'giqc88c0bn23nbroo1p6blaosup7geja', 0, NULL, 25520600),
+(1005, 'user3', '777555', '5r6m2nld1csaft2os5asfpcrukvj8i64', 0, 'user3', 250000),
+(1006, 'user3', '12345', 'sgcvrfvct2smvqpd42pgn3v39sstdgto', 2, 'user3', 8180000),
+(1007, 'admin', '888999', 'o2ug75jogkh8kaks9g7mkbtoqk2k8gcd', 1, 'admin', 99000),
+(1008, 'супермен', '12345', 'cen591ccqklg9k7k8q4racp2psf16797', 3, NULL, 8180000),
+(1009, 'Вася', '123098', '8vho3vpiumbuaun3snr2i4plpt8nkpnn', 0, NULL, 16360000),
+(1010, 'admin', '777', 'mi7uge1514hvifdh61colescsgtudb2i', 0, 'admin', 4351200);
 
 -- --------------------------------------------------------
 
@@ -190,8 +219,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `pass`, `hash`, `role`) VALUES
-(1, 'admin', '$2y$10$AIP6ujMwJ9ycBS1ThfA8meqhUlboyQecz7ctIr.HJZtZMJtqKiLFW', '13567441695e6cd3f3d7d2c0.65119509', 1),
-(2, 'user1', '$2y$10$AIP6ujMwJ9ycBS1ThfA8meqhUlboyQecz7ctIr.HJZtZMJtqKiLFW', '', 0),
+(1, 'admin', '$2y$10$AIP6ujMwJ9ycBS1ThfA8meqhUlboyQecz7ctIr.HJZtZMJtqKiLFW', '12605717395e903d2c323286.73928611', 1),
+(2, 'user1', '$2y$10$AIP6ujMwJ9ycBS1ThfA8meqhUlboyQecz7ctIr.HJZtZMJtqKiLFW', '10817338375e905dfdb5ade4.48899327', 0),
 (3, 'user2', '$2y$10$AIP6ujMwJ9ycBS1ThfA8meqhUlboyQecz7ctIr.HJZtZMJtqKiLFW', '19291171705e89cc5d993074.01774772', 0),
 (4, 'user3', '$2y$10$AIP6ujMwJ9ycBS1ThfA8meqhUlboyQecz7ctIr.HJZtZMJtqKiLFW', '', 0);
 
@@ -237,7 +266,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=222;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=297;
 
 --
 -- AUTO_INCREMENT для таблицы `feedback`
@@ -255,7 +284,7 @@ ALTER TABLE `goods`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1004;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1011;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
