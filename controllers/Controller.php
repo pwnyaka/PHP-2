@@ -7,8 +7,7 @@ namespace app\controllers;
 use app\engine\Db;
 use app\engine\Request;
 use app\interfaces\IRenderer;
-use app\model\Auth;
-use app\model\Basket;
+use app\model\repositories\{BasketRepository, UserRepository};
 
 abstract class Controller
 {
@@ -19,22 +18,11 @@ abstract class Controller
     protected $renderer;
     protected $request;
 
-    public static $authParams = [
-        'auth' => false,
-        'user' => ''
-    ];
-
-
     public function __construct(IRenderer $renderer)
     {
         $this->renderer = $renderer;
         $this->request = new Request();
-        if (Auth::is_auth()) {
-            static::$authParams['auth'] = true;
-            static::$authParams['user'] = Auth::get_user();
-        }
     }
-
 
     public function runAction($action = null, $params = null)
     {
@@ -50,9 +38,10 @@ abstract class Controller
 
     public function render($template, $params = [])
     {
-        $params['auth'] = static::$authParams['auth'];
-        $params['user'] = static::$authParams['user'];
-        $params['count'] = Basket::getCountWhere('session_id', session_id());
+        $params['auth'] = (new UserRepository())->isAuth();
+        $params['user'] = (new UserRepository())->getUser();
+        $params['admin'] = (new UserRepository())->isAdmin();
+        $params['count'] = (new BasketRepository())->getCountWhere('session_id', session_id());
         if ($this->useLayout) {
             return $this->renderTemplate("layouts/{$this->layout}", [
                 'menu' => $this->renderTemplate('menu', $params),

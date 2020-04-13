@@ -8,28 +8,36 @@ use app\model\Auth;
 use app\controllers\Controller;
 
 
-spl_autoload_register([new Autoload(), 'loadClass']);
+//spl_autoload_register([new Autoload(), 'loadClass']);
 
-require_once  realpath("../vendor/autoload.php");
+require_once realpath("../vendor/autoload.php");
 
-$request = new Request();
-$session = new Session();
-$router = new Router();
+try {
+    $request = new Request();
+    $session = new Session();
+    $router = new Router();
 
-$session->sessionStart();
+    $session->sessionStart();
 
 //$controllerName = $request->getControllerName() ?: 'index';
 //$actionName = $request->getActionName();
 
-$controllerName = $router->getControllerName() ?: 'index';
-$actionName = $router->getActionName();
-$actionParams = $router->getActionParams();
+    $controllerName = $router->getControllerName() ?: die('Ошибка 404. Контроллер не существует.');
+    $actionName = $router->getActionName();
+    $actionParams = $router->getActionParams();
 
-$controllerClass = CONTROLLER_NAMESPACE . ucfirst($controllerName) . "Controller";
-if (class_exists($controllerClass)) {
+    $controllerClass = CONTROLLER_NAMESPACE . ucfirst($controllerName) . "Controller";
     $controller = new $controllerClass(new TwigRenderer(TWIG_TEMPLATE_DIR));
     $controller->runAction($actionName, $actionParams);
-} else {
-    die("Контроллер не существует.");
 }
+catch (\PDOException $exception) {
+    echo $exception->getMessage();
+}
+catch (\Exception $exception) {
+    echo $exception->getMessage() . "<br><br>";
+    echo $exception->getTraceAsString();
+}
+
+
+
 

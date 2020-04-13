@@ -1,6 +1,12 @@
 {
     "require": {
         "twig/twig": "^3.0",
-        "ext-json": "^1.7"
+        "ext-json": "^1.7",
+        "phpunit/phpunit": "^9.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": ""
+        }
     }
 }

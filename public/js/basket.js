@@ -15,10 +15,11 @@ window.onload = function () {
           .then(response => response.json())
           .then((data) => {
             document.getElementById('count').innerText = data.count;
-            if (data.summ) {
-              document.getElementById('summ').innerText = data.summ;
+            if (data.count != 0) {
+              document.getElementById('sum').innerText = data.sum;
             } else {
-              document.querySelector('.basket-summ').innerText = 'Корзина пуста';
+              document.querySelector('.basket-sum').innerText = 'Корзина пуста';
+              document.getElementById('order').remove();
             }
           });
       document.getElementById(id).remove();

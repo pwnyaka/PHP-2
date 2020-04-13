@@ -6,19 +6,17 @@ namespace app\engine;
 
 class Session
 {
-    public function sessionStart()
+    public static function sessionStart()
     {
         session_start();
     }
 
-    public function setSessionParams($params)
+    public static function setSession($key, $value)
     {
-        foreach ($params as $key => $value) {
-            $_SESSION[$key] = $value;
-        }
+        $_SESSION[$key] = $value;
     }
 
-    public function getSessionParams($key)
+    public static function getSession($key)
     {
         return $_SESSION[$key];
     }

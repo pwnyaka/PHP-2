@@ -1,0 +1,12 @@
+<p>Всего заказов: {{ orderList|length }}</p>
+{% for order in orderList %}
+    <div>
+        <p>Статус: {{ order.status == 0 ? 'Новый' : order.status == 1 ? 'Взят в работу' : order.status == 2 ? 'Оплачен' : 'Завершен' }}<br>
+            Имя: {{ order.name }}<br>
+            Логин: {{ order.login ?: 'Не зарегистрирован' }}<br>
+            Телефон: {{ order.phone }}<br>
+            Сумма: {{ order.sum }}
+        </p>
+        <hr>
+    </div>
+{% endfor %}
