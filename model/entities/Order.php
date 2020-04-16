@@ -1,10 +1,12 @@
 <?php
 
 
-namespace app\model;
+namespace app\model\entities;
 
 
-class Order extends DbModel
+use app\model\Model;
+
+class Order extends Model
 {
     protected $id;
     protected $name;
@@ -18,23 +20,16 @@ class Order extends DbModel
         'name' => false,
         'phone' => false,
         'login' => false,
-        'status' => false,
         'sum' => false,
         'session_id' => false
     ];
 
-    public function __construct($name = null, $phone = null, $login = null, $status = null, $sum = null, $session_id = null)
+    public function __construct($name = null, $phone = null, $sum = null, $session_id = null, $login = null)
     {
         $this->name = $name;
         $this->phone = $phone;
-        $this->login = $login;
-        $this->status = $status;
         $this->sum = $sum;
         $this->session_id = $session_id;
-    }
-
-    public static function getTableName()
-    {
-        return "orders";
+        $this->login = $login;
     }
 }

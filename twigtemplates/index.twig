@@ -1,1 +1,11 @@
-<h3>Добро пожаловать в наш магазин!</h3>
+<div class="header-name">
+    <h2>Добро пожаловать в наш магазин!</h2>
+</div>
+<div class="container">
+    {% if orderMessage %}
+        <p>Благодарим за оформление заказа! Вы можете вернуться в <a href="/catalog">каталог</a> и продолжить покупки.
+        </p>
+    {% else %}
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci alias blanditiis cum eaque est eum excepturi expedita, fugit hic nobis nulla pariatur perferendis perspiciatis quam quasi qui ratione sed sequi suscipit temporibus ut vel. Accusamus ad eaque et ut? Culpa eveniet harum libero magnam perferendis praesentium quos sequi sint!</p>
+    {% endif %}
+</div>

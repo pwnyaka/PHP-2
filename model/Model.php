@@ -3,22 +3,22 @@
 
 namespace app\model;
 
-use app\interfaces\Imodel;
-use app\engine\Db;
-
-abstract class Model implements IModel
+abstract class Model
 {
     public function __set($name, $value)
     {
-        if (array_key_exists($name, $this->props)) {
-            $this->params[$name] = true;
+        if (isset($this->$name)) {
+            $this->props[$name] = true;
             $this->$name = $value;
         }
     }
 
     public function __get($name)
     {
-        return $this->$name;
+        if (isset($this->$name)) {
+            return $this->$name;
+        }
+        return null;
     }
 
     public function __call($name, $arguments)

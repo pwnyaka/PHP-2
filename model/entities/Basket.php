@@ -1,12 +1,12 @@
 <?php
 
 
-namespace app\model;
+namespace app\model\entities;
 
 
-use app\engine\Db;
+use app\model\Model;
 
-class Basket extends DbModel
+class Basket extends Model
 {
     protected $id;
     protected $session_id;
@@ -29,15 +29,5 @@ class Basket extends DbModel
         $this->quantity = $quantity;
     }
 
-    public static function getBasket($session)
-    {
-        $sql = "SELECT g.id id_prod, b.id id_basket, g.prodName, g.description, g.cost FROM basket b, goods g
- WHERE b.good_id=g.id AND session_id = :session";
-        return Db::getInstance()->queryAll($sql, ['session' => $session]);
-    }
 
-    public static function getTableName()
-    {
-        return "basket";
-    }
 }

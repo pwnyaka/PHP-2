@@ -10,5 +10,4 @@
       <hr>
     <? endforeach; ?>
 </div>
-
 <script src="/js/catalog.js"></script>

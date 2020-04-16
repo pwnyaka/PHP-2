@@ -16,7 +16,7 @@ function showProduct(url = '', data = {}) {
           let str = '';
           data.forEach((obj) => {
             str += `<h2><a href="/catalog/card/${obj.id}">${obj.prodName}</a></h2>
-                          <img src="/img/${obj.imgName}" alt="" style="width: 500px;">
+                          <img src="/img/${obj.imgName}" alt="" style="width: 300px;">
                           <p>${obj.description}</p>
                           <p>Цена: ${obj.cost}</p>
                           <p>Просмотры: ${obj.views}</p>

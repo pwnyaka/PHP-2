@@ -7,18 +7,24 @@ use app\traits\Tsingletone;
 
 class Db
 {
-    use Tsingletone;
 
-    private $config = [
-        'driver' => 'mysql',
-        'host' => 'localhost',
-        'login' => 'user',
-        'password' => '12345',
-        'database' => 'shop1',
-        'charset' => 'utf8'
-    ];
+    private $config;
 
     private $connection = null;
+
+    /**
+     * Db constructor.
+     * @param null $connection
+     */
+    public function __construct($driver, $host, $login, $password, $database, $charset = "utf8")
+    {
+        $this->config['driver'] = $driver;
+        $this->config['host'] = $host;
+        $this->config['login'] = $login;
+        $this->config['password'] = $password;
+        $this->config['database'] = $database;
+        $this->config['charset'] = $charset;
+    }
 
     private function getConnection() {
         if (is_null($this->connection)) {

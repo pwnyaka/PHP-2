@@ -1,11 +1,11 @@
 <?php
 
-namespace app\model;
+namespace app\model\entities;
 
 
-use app\engine\Db;
+use app\model\Model;
 
-class Product extends DbModel
+class Product extends Model
 {
     protected $id;
     protected $prodName;
@@ -28,16 +28,4 @@ class Product extends DbModel
         $this->cost = $cost;
         $this->imgName = $imgName;
     }
-
-    public static function getTableName()
-    {
-        return "goods";
-    }
-
-    public static function updateViews($id)
-    {
-        $sql = "UPDATE goods SET views = views + 1 WHERE id = :id";
-        Db::getInstance()->execute($sql, ["id" => $id]);
-    }
-
 }

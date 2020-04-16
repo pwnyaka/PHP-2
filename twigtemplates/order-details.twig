@@ -1,0 +1,22 @@
+<div class="header-name">
+    <h2>Детали заказа</h2>
+</div>
+
+<div class="container">
+    <div class="order-info">
+    <p><b>Имя:</b> {{ order.name }}</p>
+    <p><b>Телефон:</b> {{ order.phone }}</p>
+    <p><b>Логин:</b> {{ order.login ?: 'Не зарегистрирован' }}</p>
+    </div>
+    <p><b>Позиции заказа:</b></p>
+    <div class="order-products">
+        {% for product in list %}
+            <div class="order-products_item">
+                <span>{{ loop.index }}. {{ product.prodName }}</span>
+                <a href="/catalog/card/{{ product.id }}"><img src="/img/{{ product.imgName }}" alt="" style="width: 180px;"></a>
+                <span>Цена: {{ product.cost }}</span>
+            </div>
+        {% endfor %}
+    </div>
+    <p><b>Сумма заказа:</b> {{ order.sum }}</p>
+</div>

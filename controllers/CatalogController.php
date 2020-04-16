@@ -3,7 +3,7 @@
 
 namespace app\controllers;
 
-use app\model\Product;
+use app\engine\App;
 
 class CatalogController extends Controller
 {
@@ -11,18 +11,15 @@ class CatalogController extends Controller
 
     public function actionSelf() {
         echo $this->render('catalog', [
-            'catalog' => Product::getLimit(0, $this->productCount)
+            'catalog' => App::call()->productRepository->getLimit(0, $this->productCount)
         ]);
     }
 
     public function actionCard($id) {
 
-//        $id = (int) $this->request->getParams()['id'];
-        Product::updateViews($id);
+        App::call()->productRepository->updateViews($id);
         echo $this->render('card', [
-            'product' => Product::getOne($id)
+            'product' => App::call()->productRepository->getOne($id)
         ]);
     }
-
-
 }

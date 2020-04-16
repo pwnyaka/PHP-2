@@ -11,11 +11,13 @@ class Request
     protected $actionName;
     protected $params = [];
     protected $method;
+    protected $referer;
 
 
     public function __construct()
     {
         $this->requestString = $_SERVER['REQUEST_URI'];
+        $this->referer = $_SERVER['HTTP_REFERER'];
         $this->parseRequest();
     }
 
@@ -34,6 +36,15 @@ class Request
         }
 
     }
+
+    /**
+     * @return mixed
+     */
+    public function getReferer()
+    {
+        return $this->referer;
+    }
+
 
     /**
      * @return mixed

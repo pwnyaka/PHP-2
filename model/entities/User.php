@@ -1,9 +1,11 @@
 <?php
 
 
-namespace app\model;
+namespace app\model\entities;
 
-class User extends DbModel
+use app\model\Model;
+
+class User extends Model
 {
     protected $id;
     protected $login;
@@ -22,10 +24,5 @@ class User extends DbModel
         $this->login = $login;
         $this->pass = $pass;
         $this->role = $role;
-    }
-
-    public static function getTableName()
-    {
-        return "users";
     }
 }

@@ -2,19 +2,27 @@
     <h2>Корзина</h2>
 </div>
 
-{% if products == null %}
-    Корзина пуста
-{% else %}
-    {% for item in products %}
-        <div class="basket-product" id="{{ item.id_basket }}">
-            <h2>{{ item.prodName }}</h2>
-            <p>Описание: {{ item.description }}</p>
-            <p>Цена:{{ item.cost }}</p>
-            <button class="delete" data-id="{{ item.id_basket }}">Удалить</button>
-            <hr>
-        </div>
-    {% endfor %}
-    <p class="basket-summ"><b>Сумма заказа: </b><span id="summ">{{ summ }}</span> </p>
-{% endif %}
+<div class="container">
+    {% if products == null %}
+        Корзина пуста
+    {% else %}
+        {% for item in products %}
+            <div class="basket-product" id="{{ item.id_basket }}">
+                <h2>{{ item.prodName }}</h2>
+                <img src="/img/{{ item.imgName }}" alt="" style="width: 200px;">
+                <p>Цена: {{ item.cost }} руб</p>
+                <button class="delete" data-id="{{ item.id_basket }}">Удалить</button>
+                <hr>
+            </div>
+        {% endfor %}
+        <p class="basket-sum"><b>Сумма заказа: </b><span id="sum">{{ sum }} руб</span> </p>
+        <form id="order" action="/basket/order" method="post">
+            <input type="text" name="name" placeholder="Ваше имя" {% if auth == false %}required {% else %} value="{{ user }}" {% endif %}>
+            <input type="tel" name="phone" pattern="[0-9]{3,12}" placeholder="Телефон" required>
+            <input type="submit" value="Оформить заказ">
+        </form>
+    {% endif %}
+</div>
+
 
 <script src="/js/basket.js"></script>

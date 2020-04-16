@@ -11,15 +11,23 @@ class Session
         session_start();
     }
 
-    public function setSessionParams($params)
+    public function setSession($key, $value)
     {
-        foreach ($params as $key => $value) {
-            $_SESSION[$key] = $value;
-        }
+        $_SESSION[$key] = $value;
     }
 
-    public function getSessionParams($key)
+    public function getSession($key)
     {
         return $_SESSION[$key];
+    }
+
+    public function destroySession()
+    {
+        session_destroy();
+    }
+
+    public function regenerateSession()
+    {
+        session_regenerate_id();
     }
 }
