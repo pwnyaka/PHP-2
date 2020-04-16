@@ -1,12 +1,44 @@
-<p>Всего заказов: {{ orderList|length }}</p>
-{% for order in orderList %}
-    <div>
-        <p>Статус: {{ order.status == 0 ? 'Новый' : order.status == 1 ? 'Взят в работу' : order.status == 2 ? 'Оплачен' : 'Завершен' }}<br>
-            Имя: {{ order.name }}<br>
-            Логин: {{ order.login ?: 'Не зарегистрирован' }}<br>
-            Телефон: {{ order.phone }}<br>
-            Сумма: {{ order.sum }}
-        </p>
-        <hr>
+<div class="container">
+    <form action="">
+        <label for="filter">Фильтр:</label>
+        <select name="filter" id="filter">
+            <option value="4">Все</option>
+            <option value="0">Новый</option>
+            <option value="1">В работе</option>
+            <option value="2">Оплачен</option>
+            <option value="3">Завершен</option>
+        </select>
+        <button id="filter-btn">Показать</button>
+    </form>
+    <p>Всего заказов: {{ orderList|length }}</p>
+    <div class="orders-head">
+        <div class="head orders_number">№</div>
+        <div class="head orders_status">Статус</div>
+        <div class="head orders_name">Имя</div>
+        <div class="head orders_login">Логин</div>
+        <div class="head orders_phone">Телефон</div>
+        <div class="head orders_sum">Сумма</div>
+        <div class="head orders_details">Детали</div>
+        <div class="head orders_controls">Управление</div>
     </div>
-{% endfor %}
+    <hr>
+    {% for order in orderList %}
+        <div class="order" data-id="{{ order.id }}">
+            <div class="orders_number">{{ loop.index }}</div>
+            <div class="orders_status">{{ order.status == 0 ? 'Новый' : order.status == 1 ? 'В работе' : order.status == 2 ? 'Оплачен' : 'Завершен' }}</div>
+            <div class="orders_name">{{ order.name }}</div>
+            <div class="orders_login">{{ order.login ?: 'Не зарегистрирован' }}</div>
+            <div class="orders_phone">{{ order.phone }}</div>
+            <div class="orders_sum">{{ order.sum }}</div>
+            <div class="orders_details"><a target="_blank" href="/orders/details/{{ order.id }}">Подробнее</a></div>
+            <div class="orders_controls">
+                {% if order.status != 3 %}
+                    <button data-id="{{ order.id }}" data-status="{{ order.status }}" class="order_button">{{ order.status == 0 ? 'Взять в работу' : order.status == 1 ? 'Подтвердить оплату' : order.status == 2 ? 'Завершить' : '' }}</button>
+                {% else %}
+                    -
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<script src="/js/orders.js"></script>

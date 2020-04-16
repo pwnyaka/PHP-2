@@ -4,8 +4,7 @@
 namespace app\model\repositories;
 
 
-use app\engine\Db;
-use app\engine\Session;
+use app\engine\App;
 use app\model\entities\User;
 use app\model\Repository;
 
@@ -24,10 +23,10 @@ class UserRepository extends Repository
     public function updateHash()
     {
         $hash = uniqid(rand(), true);
-        $id = (int)Session::getSession('id');
+        $id = (int)App::call()->session->getSession('id');
         $tableName = $this->getTableName();
         $sql = "UPDATE {$tableName} SET `hash` = :hash WHERE `users`.`id` = :id";
-        Db::getInstance()->execute($sql, ["hash" => $hash, "id" => $id]);
+        App::call()->db->execute($sql, ["hash" => $hash, "id" => $id]);
         setcookie("hash", $hash, time() + 36000, '/');
     }
 
@@ -35,11 +34,11 @@ class UserRepository extends Repository
     {
         $tableName = $this->getTableName();
         $sql = "SELECT * FROM {$tableName} WHERE login = :login";
-        $passDb = Db::getInstance()->queryOne($sql, ["login" => $login]);
+        $passDb = App::call()->db->queryOne($sql, ["login" => $login]);
         if (password_verify($pass, $passDb['pass'])) {
-            Session::setSession('login', $login);
-            Session::setSession('id', $passDb['id']);
-            Session::setSession('role', $passDb['role']);
+            App::call()->session->setSession('login', $login);
+            App::call()->session->setSession('id', $passDb['id']);
+            App::call()->session->setSession('role', $passDb['role']);
             return true;
         }
         return false;
@@ -47,7 +46,7 @@ class UserRepository extends Repository
 
     public function isAdmin()
     {
-        return (Session::getSession('role') == 1) ? true : false;
+        return (App::call()->session->getSession('role') == 1) ? true : false;
     }
 
     public function isAuth()
@@ -55,9 +54,9 @@ class UserRepository extends Repository
         if (isset($_COOKIE["hash"]) && is_null($this->getUser())) {
             $hash = $_COOKIE["hash"];
             $sql = "SELECT * FROM `users` WHERE `hash`=:hash";
-            $user = Db::getInstance()->queryOne($sql, ["hash" => $hash])['login'];
+            $user = App::call()->db->queryOne($sql, ["hash" => $hash])['login'];
             if (!empty($user)) {
-                Session::setSession('login', $user);
+                App::call()->session->setSession('login', $user);
             }
         }
         return !is_null($this->getUser());
@@ -66,7 +65,7 @@ class UserRepository extends Repository
 
     public function getUser()
     {
-        return Session::getSession('login');
+        return App::call()->session->getSession('login');
 
     }
 }

@@ -1,17 +1,18 @@
 <div class="header-name">
     <h2>Каталог</h2>
 </div>
-
-<div class="wrapper">
-    {% for item in catalog %}
-        <h2><a href="/catalog/card/{{ item.id }}">{{ item.prodName }}</a></h2>
-        <img src="/img/{{ item.imgName }}" alt="" style="width: 500px;">
-        <p>{{ item.description }}</p>
-        <p>Цена: {{ item.cost }}</p>
-        <p>Просмотры: {{ item.views }}</p>
-        <button class="buy" data-id="{{ item.id }}" data-cost="{{ item.cost }}">Купить</button>
-        <hr>
-    {% endfor %}
+<div class="container">
+    <div class="wrapper">
+        {% for item in catalog %}
+            <h2><a href="/catalog/card/{{ item.id }}">{{ item.prodName }}</a></h2>
+            <img src="/img/{{ item.imgName }}" alt="" style="width: 300px;">
+            <p>{{ item.description }}</p>
+            <p>Цена: {{ item.cost }}</p>
+            <p>Просмотры: {{ item.views }}</p>
+            <button class="buy" data-id="{{ item.id }}" data-cost="{{ item.cost }}">Купить</button>
+            <hr>
+        {% endfor %}
+    </div>
 </div>
 
 <script src="/js/functions.js"></script>

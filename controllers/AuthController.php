@@ -3,30 +3,30 @@
 
 namespace app\controllers;
 
-use app\model\repositories\UserRepository;
+use app\engine\App;
 
 class AuthController extends Controller
 {
     public function actionLogin()
     {
-        if (isset($this->request->getParams()['send'])) {
-            $login = $this->request->getParams()['login'];
-            $pass = $this->request->getParams()['pass'];
-            if (!(new UserRepository())->auth($login, $pass)) {
+        if (isset(App::call()->request->getParams()['send'])) {
+            $login = App::call()->request->getParams()['login'];
+            $pass = App::call()->request->getParams()['pass'];
+            if (!App::call()->usersRepository->auth($login, $pass)) {
                 Die('Не верный логин пароль');
             } else {
-                if (isset($this->request->getParams()['save'])) {
-                    (new UserRepository())->updateHash();
+                if (isset(App::call()->request->getParams()['save'])) {
+                    App::call()->usersRepository->updateHash();
                 }
-                header("Location:" . $this->request->getReferer());
+                header("Location:" . App::call()->request->getReferer());
             }
         }
     }
 
     public function actionLogout()
     {
-        session_regenerate_id();
-        session_destroy();
+        App::call()->session->regenerateSession();
+        App::call()->session->destroySession();
         setcookie("hash", "", time() - 36000, '/');
         header("Location:/");
     }

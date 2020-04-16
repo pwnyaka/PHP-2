@@ -4,7 +4,7 @@
 namespace app\model\repositories;
 
 
-use app\engine\Db;
+use app\engine\App;
 use app\model\entities\Basket;
 use app\model\Repository;
 
@@ -24,6 +24,6 @@ class BasketRepository extends Repository
     {
         $sql = "SELECT g.id id_prod, b.id id_basket, g.prodName, g.cost, g.imgName FROM basket b, goods g
  WHERE b.good_id=g.id AND session_id = :session";
-        return Db::getInstance()->queryAll($sql, ['session' => $session]);
+        return App::call()->db->queryAll($sql, ['session' => $session]);
     }
 }

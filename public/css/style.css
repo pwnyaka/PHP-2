@@ -1,24 +1,133 @@
 body {
     margin: 0;
+    font-family: sans-serif;
 }
+
+body a {
+    text-decoration: none;
+    color: blue;
+}
+
+body a:hover {
+    color: #555;
+}
+
 header  {
     position: sticky;
     top: 0;
-    background-color: #eee;
-    padding: 10px;
-    width: 100%;
-    height: 60px;
+    background-color: #ddd;
+    padding: 20px;
+    width: 1200px;
+    margin: 0 auto;
+    height: 80px;
     box-sizing: border-box;
+
+}
+
+.menu {
+    margin-top: 10px;
 }
 
 .header-name {
-    width: 100%;
-    background-color: #eee;
+    width: 1200px;
+    background-color: #ddd;
     position: sticky;
-    top: 60px;
-    padding: 10px;
+    top: 80px;
+    padding: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+
 }
 
 .header-name h2 {
     margin: 0;
 }
+
+.container {
+    margin: 0 auto;
+    width: 1200px;
+    padding: 20px;
+    min-height: calc(100vh - 148px);
+    background-color: #eee;
+    box-sizing: border-box;
+}
+
+.orders-head, .order {
+    display: flex;
+    width: 100%;
+}
+
+.order_button {
+    width: 120px;
+    min-height: 20px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    color: blue;
+    font-weight: 700;
+}
+.order_button:hover {
+    background-color: blue;
+    color: #ffffff;
+}
+
+.head {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.orders_sum, .orders_phone, .orders_login, .orders_name, .orders_status, .orders_number, .orders_controls, .orders_details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.orders_number {
+    width: 50px;
+}
+.orders_status {
+    width: 100px;
+}
+.orders_name {
+    width: 150px;
+}
+.orders_login {
+    width: 150px;
+    text-align: center;
+}
+.orders_phone {
+    width: 200px;
+}
+.orders_sum {
+    width: 200px;
+}
+.orders_details {
+    width: 150px;
+}
+.orders_controls {
+    width: 150px;
+}
+
+.order-products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.order {
+    border-bottom: 1px solid darkgray;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.order-products_item {
+    width: 200px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+.order-info {
+    display: flex;
+    justify-content: space-around;
+}
+

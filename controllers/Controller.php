@@ -4,10 +4,8 @@
 namespace app\controllers;
 
 
-use app\engine\Db;
-use app\engine\Request;
+use app\engine\App;
 use app\interfaces\IRenderer;
-use app\model\repositories\{BasketRepository, UserRepository};
 
 abstract class Controller
 {
@@ -16,12 +14,10 @@ abstract class Controller
     protected $layout = 'main';
     protected $useLayout = true;
     protected $renderer;
-    protected $request;
 
     public function __construct(IRenderer $renderer)
     {
         $this->renderer = $renderer;
-        $this->request = new Request();
     }
 
     public function runAction($action = null, $params = null)
@@ -38,10 +34,10 @@ abstract class Controller
 
     public function render($template, $params = [])
     {
-        $params['auth'] = (new UserRepository())->isAuth();
-        $params['user'] = (new UserRepository())->getUser();
-        $params['admin'] = (new UserRepository())->isAdmin();
-        $params['count'] = (new BasketRepository())->getCountWhere('session_id', session_id());
+        $params['auth'] = App::call()->usersRepository->isAuth();
+        $params['user'] = App::call()->usersRepository->getUser();
+        $params['admin'] = App::call()->usersRepository->isAdmin();
+        $params['count'] = App::call()->basketRepository->getCountWhere('session_id', session_id());
         if ($this->useLayout) {
             return $this->renderTemplate("layouts/{$this->layout}", [
                 'menu' => $this->renderTemplate('menu', $params),

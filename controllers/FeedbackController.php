@@ -3,13 +3,13 @@
 
 namespace app\controllers;
 
-use app\model\repositories\FeedbackRepository;
+use app\engine\App;
 
 class FeedbackController extends Controller
 {
     public function actionSelf() {
         echo $this->render('feedback', [
-            'feedback' => (new FeedbackRepository())->getAll()
+            'feedback' => App::call()->feedbackRepository->getAll()
         ]);
     }
 }
